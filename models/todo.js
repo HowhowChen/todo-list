@@ -10,4 +10,4 @@ const todoSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = mongoose.model('Todo', todoSchema) //TODO 為collection 名稱
