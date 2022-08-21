@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const Todo = require('./models/todo')
 const app = express()
 
+
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  }) // 設定連線到 mongoDB
 
 // 取得資料庫連線狀態
@@ -21,6 +22,9 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// setting body-parser
+app.use(express.urlencoded({ extended: true }))
+
 
 // 設定首頁路由
 app.get('/', (req, res) => {
@@ -28,6 +32,22 @@ app.get('/', (req, res) => {
     .lean()
     .then(todos => res.render('index', { todos }))
     .catch(error => console.error(error))
+})
+
+app.get('/todos/new', (req, res) => {
+  res.render('new')
+})
+
+app.post('/todos', (req, res) => {
+  const name = req.body.name
+  const todo = new Todo({ name })
+  return todo.save()
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
+
+  // return Todo.create({ name })
+  //   .then(() => res.redirect('/'))
+  //   .catch(error => console.error(error))
 })
 
 // 設定 port 3000
