@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Todo = require('../../models/todo')
 
-
 router.get('/new', (req, res) => {
   res.render('new')
 })
@@ -19,7 +18,7 @@ router.post('/', (req, res) => {
   //   .catch(error => console.error(error))
 })
 
-//find detail
+//  find detail
 router.get('/:id', (req, res) => {
   const id = req.params.id
   return Todo.findById(id)
@@ -56,6 +55,5 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-
 
 module.exports = router

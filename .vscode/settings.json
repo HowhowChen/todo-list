@@ -1,0 +1,9 @@
+{
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "editor.tabSize": 2,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.settings.useSplitJSON": true,
+  "standard.usePackageJson": true
+}
