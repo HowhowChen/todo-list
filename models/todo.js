@@ -8,7 +8,13 @@ const todoSchema = new Schema({
   isDone: {
     type: Boolean,
     default: false
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    required: true
   }
 })
 
-module.exports = mongoose.model('Todo', todoSchema) //TODO 為collection 名稱
+module.exports = mongoose.model('Todo', todoSchema) //  TODO 為collection名稱
